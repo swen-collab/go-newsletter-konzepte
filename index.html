@@ -679,30 +679,28 @@ document.querySelectorAll('.panel').forEach(p=>{const c=p.querySelector('.cmp');
 p.querySelectorAll('.sv').forEach(b=>b.addEventListener('click',()=>{p.querySelectorAll('.sv').forEach(x=>x.classList.toggle('on',x===b));c.classList.toggle('phone',b.dataset.view==='phone');c.classList.toggle('desk',b.dataset.view!=='phone');fit();}));
 p.querySelectorAll('.sm').forEach(b=>b.addEventListener('click',()=>{p.querySelectorAll('.sm').forEach(x=>x.classList.toggle('on',x===b));c.dataset.mode=b.dataset.mode;fit();}));});
 addEventListener('resize',fit);addEventListener('load',fit);setTimeout(fit,50);
-// Freigabe der Agentur: speichert Name, Entscheidung und Bemerkung zentral
-const API='https://ktl-luma.app.n8n.cloud/webhook';
-const NAMES={"m1": "Konzept 1 · Boss Level", "m2": "Konzept 2 · Continue?", "m3": "Konzept 3 · Let it rip", "m4": "Konzept 4 · Loot-Tresor", "m5": "Konzept 5 · Patch Notes"};
+window.FREIGABE_NAMES={"m1": "Startseite · Black Friday (P2)", "m2": "Startseite · Last Call (P3)", "m3": "Startseite · Konzept 3 · Let it rip", "m4": "Startseite · Treasure Vault (N3)", "m5": "Startseite · Konzept 5 · Patch Notes"};
+(function(){
+const FORM='https://docs.google.com/forms/d/e/1FAIpQLSeTglAID_WIrlymUFRj_8EWBzyMg-jZAaLgMcWGkbMZH42KbA/formResponse';
+const F={mail:'entry.1893952684',ent:'entry.1890553785',name:'entry.1427850065',bem:'entry.1415660476'};
 const LBL={freigegeben:['Freigegeben','ok'],aendern:['Änderung nötig','ch']};
-function fmt(d){try{return new Date(d).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}catch(e){return ''}}
-function paint(k,st){const el=document.getElementById('as-'+k);const t=document.querySelector('.tab[data-k="'+k+'"]');if(!el||!st||!LBL[st.entscheidung])return;const [txt,cls]=LBL[st.entscheidung];el.textContent=txt+(st.am?' · '+fmt(st.am):'');el.className='astate '+cls;
- if(t){let b=t.querySelector('.tb');if(!b){b=document.createElement('span');t.appendChild(b);}b.className='tb '+cls;b.textContent=cls==='ok'?'✓':'!';}}
-fetch(API+'/go-newsletter-freigabe-status').then(r=>r.ok?r.json():null).then(d=>{if(d&&d.status)Object.keys(d.status).forEach(k=>paint(k,d.status[k]));}).catch(()=>{});
-let saved='';try{saved=localStorage.getItem('go_name')||''}catch(e){}
-document.querySelectorAll('.appr').forEach(box=>{const k=box.dataset.k;const nm=document.getElementById('an-'+k),tx=document.getElementById('ab-'+k),msg=document.getElementById('am-'+k);if(saved)nm.value=saved;
- box.querySelectorAll('.ab').forEach(b=>b.addEventListener('click',async()=>{const v=b.dataset.v;
+function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v));}catch(e){return null}}
+function fmt(d){try{return new Date(d).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
+function paint(k,st){const el=document.getElementById('as-'+k);if(!el||!st||!LBL[st.v])return;const L=LBL[st.v];el.textContent=L[0]+' · '+fmt(st.at);el.className='astate '+L[1];
+ const t=document.querySelector('.tab[data-k="'+k+'"]');if(t){let b=t.querySelector('.tb');if(!b){b=document.createElement('span');t.appendChild(b);}b.className='tb '+L[1];b.textContent=L[1]==='ok'?'✓':'!';}}
+const saved=ls('go_name')||'';
+document.querySelectorAll('.appr').forEach(function(box){const k=box.dataset.k;const nm=document.getElementById('an-'+k),tx=document.getElementById('ab-'+k),msg=document.getElementById('am-'+k);
+ if(saved&&nm&&!nm.value)nm.value=saved;const st=ls('go_appr_'+k);if(st){paint(k,st);if(st.b&&tx&&!tx.value)tx.value=st.b;}
+ box.querySelectorAll('.ab').forEach(function(b){b.addEventListener('click',async function(){const v=b.dataset.v;
   if(!nm.value.trim()){msg.textContent='Bitte deinen Namen eintragen.';nm.focus();return;}
   if(v==='aendern'&&!tx.value.trim()){msg.textContent='Bitte kurz schreiben, was sich ändern soll.';tx.focus();return;}
-  try{localStorage.setItem('go_name',nm.value.trim())}catch(e){}
-  const data={mail:k,entscheidung:v,bemerkung:tx.value.trim(),name:nm.value.trim(),seite:'agentur'};
-  // im Hintergrund zentral speichern (n8n), wenn verfügbar
-  try{fetch(API+'/go-newsletter-freigabe',{method:'POST',body:new URLSearchParams(data),keepalive:true}).then(r=>{if(r.ok)paint(k,{entscheidung:v,am:new Date().toISOString()});}).catch(()=>{});}catch(e){}
-  // Hauptweg: fertige E-Mail
-  const to=['swen','pure-roots.de'].join('@');
-  const subj='Freigabe '+NAMES[k]+': '+LBL[v][0];
-  const body=[NAMES[k],'Entscheidung: '+LBL[v][0],'Name: '+data.name,'','Bemerkung:',data.bemerkung||'(keine)'].join('\n');
-  const href='mailto:'+to+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
-  msg.innerHTML='';const p1=document.createElement('span');p1.textContent='Dein E-Mail-Programm öffnet sich. Bitte die vorbereitete Mail absenden. Öffnet sich nichts? ';
-  const a=document.createElement('a');a.href=href;a.textContent='Hier klicken';a.style.color='var(--cyan)';
-  const p2=document.createElement('span');p2.textContent=' oder an '+to+' schreiben.';msg.append(p1,a,p2);
-  window.location.href=href;}));});
+  const body=new URLSearchParams();body.append(F.mail,(window.FREIGABE_NAMES||{})[k]||k);body.append(F.ent,LBL[v][0]);body.append(F.name,nm.value.trim().slice(0,80));body.append(F.bem,tx.value.trim().slice(0,2000));
+  box.querySelectorAll('.ab').forEach(function(x){x.disabled=true});msg.textContent='Wird gespeichert …';
+  try{await fetch(FORM,{method:'POST',mode:'no-cors',body:body});
+   const s={v:v,at:new Date().toISOString(),b:tx.value.trim()};ls('go_name',nm.value.trim());ls('go_appr_'+k,s);paint(k,s);
+   msg.textContent='Gespeichert. Danke! Du kannst die Bemerkung jederzeit ändern und neu speichern.';}
+  catch(e){msg.textContent='Speichern hat nicht geklappt. Bitte die Internetverbindung prüfen und noch einmal tippen.';}
+  finally{box.querySelectorAll('.ab').forEach(function(x){x.disabled=false});}
+ });});});
+})();
 </script></body></html>
