@@ -135,7 +135,8 @@ body{margin:0}
 @media (max-width:900px){.rules{grid-template-columns:minmax(0,1fr)}}
 .rules ul{margin:0;padding-left:18px;line-height:1.6;color:#dcd7f5}
 .logo{height:30px;display:block;margin-bottom:22px}
-.appr{margin-top:18px;border-color:#3a3270}
+.appr{margin-top:18px;border-color:#3a3270;scroll-margin-top:16px}
+.jump{display:inline-flex;align-items:center;border-radius:12px;padding:10px 16px;background:var(--ok);color:#06110c;font-weight:900;text-decoration:none;white-space:nowrap} .jump:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
 .apprhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .astate{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:8px;background:#26213d;color:var(--mute)}
 .astate:empty{display:none} .astate.ok{background:var(--ok);color:#06110c} .astate.ch{background:var(--warn);color:#1a1000}
@@ -163,7 +164,7 @@ body{margin:0}
 <section class='panel' id='p-m1' data-k='m1' >
 <div class='intro2'><div><div class='eyebrow'>Konzept 1 · Aktions-Hauptmail</div><h2>Boss Level: Black Friday</h2></div>
 <div class='ctrl'><div class='seg' role='group' aria-label='Ansicht'><button class='sm on' data-mode='cmp'>Vergleich</button><button class='sm' data-mode='new'>Nur Vorschlag</button></div>
-<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div></div></div>
+<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div><a class='jump' href='#appr-m1'>Zur Freigabe ↓</a></div></div>
 <div class='cmp phone' data-mode='cmp'>
 <div class='col old'><div class='colhead'><span class='tag tag-old'>Aktuell</span><div><b>Black Weeks 8 · „Happy Shopping!“</b><span>geplant 27.11.</span></div></div>
 <div class='scaler'><div class='box600'><img class='od' src='a/orig_bw8_desk.webp' alt='Aktuelle Mail, Desktop'><img class='op' src='a/orig_bw8_phone.webp' alt='Aktuelle Mail, Mobil'></div></div></div>
@@ -283,7 +284,7 @@ background:linear-gradient(140deg,#3ee6e8,#ffffff 30%,#3ee6e8 55%,#3a2c8a);box-s
 <div class='small' style='color:#9a95b8;font-size:13px;margin-top:10px'>GAMERS ONLY GmbH · Josef-Dietzgen-Str. 3 · 53773 Hennef<br>Du bekommst diese Mail, weil du dich für unseren Newsletter angemeldet hast.<br><u>Abmelden</u> · <u>Im Browser ansehen</u></div>
 <div class='small' style='color:#7f7a9c;font-size:12px;margin-top:10px'>©2002 MASASHI KISHIMOTO / 2007 SHIPPUDEN All Rights Reserved. · © 2025 Viacom Overseas Holdings C.V. · ©2025 SANRIO CO., LTD. · ©B.S/S, T.A · ©E.O/S., T.A · Star Trek: TM & © CBS Studios Inc. All Rights Reserved.</div></div></div></div></div></div></div>
 </div>
-<div class='info appr' data-k='m1'>
+<div class='info appr' id='appr-m1' data-k='m1'>
 <div class='apprhead'><h3>Freigabe Konzept 1</h3><span class='astate' id='as-m1'></span></div>
 <div class='agrid'><label>Name<input id='an-m1' maxlength='80' placeholder='Dein Name' autocomplete='name'></label>
 <label class='awide'>Bemerkung<textarea id='ab-m1' maxlength='2000' placeholder='Was passt, was soll anders werden?'></textarea></label></div>
@@ -292,7 +293,7 @@ background:linear-gradient(140deg,#3ee6e8,#ffffff 30%,#3ee6e8 55%,#3a2c8a);box-s
 </div></section><section class='panel' id='p-m2' data-k='m2' hidden>
 <div class='intro2'><div><div class='eyebrow'>Konzept 2 · Last Call</div><h2>Continue?: Letzter Tag</h2></div>
 <div class='ctrl'><div class='seg' role='group' aria-label='Ansicht'><button class='sm on' data-mode='cmp'>Vergleich</button><button class='sm' data-mode='new'>Nur Vorschlag</button></div>
-<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div></div></div>
+<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div><a class='jump' href='#appr-m2'>Zur Freigabe ↓</a></div></div>
 <div class='cmp phone' data-mode='cmp'>
 <div class='col old'><div class='colhead'><span class='tag tag-old'>Aktuell</span><div><b>Black Weeks 9 · „Morgen ist Schluss!“</b><span>geplant 29.11.</span></div></div>
 <div class='scaler'><div class='box600'><img class='od' src='a/orig_bw9_desk.webp' alt='Aktuelle Mail, Desktop'><img class='op' src='a/orig_bw9_phone.webp' alt='Aktuelle Mail, Mobil'></div></div></div>
@@ -347,7 +348,7 @@ font-weight:900;font-style:italic;text-transform:uppercase;font-size:22px;letter
 <div class='small' style='color:#9a95b8;font-size:13px;margin-top:10px'>GAMERS ONLY GmbH · Josef-Dietzgen-Str. 3 · 53773 Hennef<br>Du bekommst diese Mail, weil du dich für unseren Newsletter angemeldet hast.<br><u>Abmelden</u> · <u>Im Browser ansehen</u></div>
 <div class='small' style='color:#7f7a9c;font-size:12px;margin-top:10px'>©2002 MASASHI KISHIMOTO / 2007 SHIPPUDEN All Rights Reserved. · Star Trek: TM & © CBS Studios Inc. All Rights Reserved.</div></div></div></div></div></div></div>
 </div>
-<div class='info appr' data-k='m2'>
+<div class='info appr' id='appr-m2' data-k='m2'>
 <div class='apprhead'><h3>Freigabe Konzept 2</h3><span class='astate' id='as-m2'></span></div>
 <div class='agrid'><label>Name<input id='an-m2' maxlength='80' placeholder='Dein Name' autocomplete='name'></label>
 <label class='awide'>Bemerkung<textarea id='ab-m2' maxlength='2000' placeholder='Was passt, was soll anders werden?'></textarea></label></div>
@@ -356,7 +357,7 @@ font-weight:900;font-style:italic;text-transform:uppercase;font-size:22px;letter
 </div></section><section class='panel' id='p-m3' data-k='m3' hidden>
 <div class='intro2'><div><div class='eyebrow'>Konzept 3 · Lizenz-Launch</div><h2>Let it rip: Beyblade X</h2></div>
 <div class='ctrl'><div class='seg' role='group' aria-label='Ansicht'><button class='sm on' data-mode='cmp'>Vergleich</button><button class='sm' data-mode='new'>Nur Vorschlag</button></div>
-<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div></div></div>
+<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div><a class='jump' href='#appr-m3'>Zur Freigabe ↓</a></div></div>
 <div class='cmp phone' data-mode='cmp'>
 <div class='col old'><div class='colhead'><span class='tag tag-old'>Aktuell</span><div><b>XMAS · „Let it rip“</b><span>geplant 6.12.</span></div></div>
 <div class='scaler'><div class='box600'><img class='od' src='a/orig_xmas_desk.webp' alt='Aktuelle Mail, Desktop'><img class='op' src='a/orig_xmas_phone.webp' alt='Aktuelle Mail, Mobil'></div></div></div>
@@ -427,7 +428,7 @@ box-shadow:0 0 0 6px #0c0a14,0 14px 30px rgba(0,0,0,.45);z-index:6;padding:12px'
 <div class='small' style='color:#9a95b8;font-size:13px;margin-top:10px'>GAMERS ONLY GmbH · Josef-Dietzgen-Str. 3 · 53773 Hennef<br>Du bekommst diese Mail, weil du dich für unseren Newsletter angemeldet hast.<br><u>Abmelden</u> · <u>Im Browser ansehen</u></div>
 <div class='small' style='color:#7f7a9c;font-size:12px;margin-top:10px'>Beyblade X: Lizenzhinweis laut Lizenzgeber ergänzen. · ©2002 MASASHI KISHIMOTO / 2007 SHIPPUDEN All Rights Reserved. · ©E.O/S., T.A · © 2025 Viacom Overseas Holdings C.V.</div></div></div></div></div></div></div>
 </div>
-<div class='info appr' data-k='m3'>
+<div class='info appr' id='appr-m3' data-k='m3'>
 <div class='apprhead'><h3>Freigabe Konzept 3</h3><span class='astate' id='as-m3'></span></div>
 <div class='agrid'><label>Name<input id='an-m3' maxlength='80' placeholder='Dein Name' autocomplete='name'></label>
 <label class='awide'>Bemerkung<textarea id='ab-m3' maxlength='2000' placeholder='Was passt, was soll anders werden?'></textarea></label></div>
@@ -436,7 +437,7 @@ box-shadow:0 0 0 6px #0c0a14,0 14px 30px rgba(0,0,0,.45);z-index:6;padding:12px'
 </div></section><section class='panel' id='p-m4' data-k='m4' hidden>
 <div class='intro2'><div><div class='eyebrow'>Konzept 4 · Erklär-Mail</div><h2>Loot-Tresor: Treasure Vault</h2></div>
 <div class='ctrl'><div class='seg' role='group' aria-label='Ansicht'><button class='sm on' data-mode='cmp'>Vergleich</button><button class='sm' data-mode='new'>Nur Vorschlag</button></div>
-<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div></div></div>
+<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div><a class='jump' href='#appr-m4'>Zur Freigabe ↓</a></div></div>
 <div class='cmp phone' data-mode='cmp'>
 <div class='col old'><div class='colhead'><span class='tag tag-old'>Aktuell</span><div><b>Treasure Vault heute · Block aus Black Weeks 2</b><span>gesendet 3.11. · eine eigene Vault-Mail gibt es noch nicht</span></div></div>
 <div class='scaler'><div class='box600'><img class='od' src='a/orig_bw2v_desk.webp' alt='Aktuelle Mail, Desktop'><img class='op' src='a/orig_bw2v_phone.webp' alt='Aktuelle Mail, Mobil'></div></div></div>
@@ -508,7 +509,7 @@ font-weight:900;font-style:italic;text-transform:uppercase;font-size:22px;letter
 <div class='small' style='color:#9a95b8;font-size:13px;margin-top:10px'>GAMERS ONLY GmbH · Josef-Dietzgen-Str. 3 · 53773 Hennef<br>Du bekommst diese Mail, weil du dich für unseren Newsletter angemeldet hast.<br><u>Abmelden</u> · <u>Im Browser ansehen</u></div>
 <div class='small' style='color:#7f7a9c;font-size:12px;margin-top:10px'>©2025 SANRIO CO., LTD. · ©2002 MASASHI KISHIMOTO / 2007 SHIPPUDEN All Rights Reserved. · ©E.O/S., T.A · Star Trek: TM & © CBS Studios Inc. All Rights Reserved.</div></div></div></div></div></div></div>
 </div>
-<div class='info appr' data-k='m4'>
+<div class='info appr' id='appr-m4' data-k='m4'>
 <div class='apprhead'><h3>Freigabe Konzept 4</h3><span class='astate' id='as-m4'></span></div>
 <div class='agrid'><label>Name<input id='an-m4' maxlength='80' placeholder='Dein Name' autocomplete='name'></label>
 <label class='awide'>Bemerkung<textarea id='ab-m4' maxlength='2000' placeholder='Was passt, was soll anders werden?'></textarea></label></div>
@@ -517,7 +518,7 @@ font-weight:900;font-style:italic;text-transform:uppercase;font-size:22px;letter
 </div></section><section class='panel' id='p-m5' data-k='m5' hidden>
 <div class='intro2'><div><div class='eyebrow'>Konzept 5 · Drop-Vorlage</div><h2>Patch Notes: Neue Sorte</h2></div>
 <div class='ctrl'><div class='seg' role='group' aria-label='Ansicht'><button class='sm on' data-mode='cmp'>Vergleich</button><button class='sm' data-mode='new'>Nur Vorschlag</button></div>
-<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div></div></div>
+<div class='seg' role='group' aria-label='Gerät'><button class='sv' data-view='desk'>Desktop</button><button class='sv on' data-view='phone'>Mobil</button></div><a class='jump' href='#appr-m5'>Zur Freigabe ↓</a></div></div>
 <div class='cmp phone' data-mode='cmp'>
 <div class='col old'><div class='colhead'><span class='tag tag-old'>Aktuell</span><div><b>Black Weeks 5 · „Sasuke ist da!“</b><span>gesendet 15.11.</span></div></div>
 <div class='scaler'><div class='box600'><img class='od' src='a/orig_bw5_desk.webp' alt='Aktuelle Mail, Desktop'><img class='op' src='a/orig_bw5_phone.webp' alt='Aktuelle Mail, Mobil'></div></div></div>
@@ -603,7 +604,7 @@ box-shadow:0 0 0 6px #0c0a14,0 14px 30px rgba(0,0,0,.45);z-index:6;padding:12px'
 <div class='small' style='color:#9a95b8;font-size:13px;margin-top:10px'>GAMERS ONLY GmbH · Josef-Dietzgen-Str. 3 · 53773 Hennef<br>Du bekommst diese Mail, weil du dich für unseren Newsletter angemeldet hast.<br><u>Abmelden</u> · <u>Im Browser ansehen</u></div>
 <div class='small' style='color:#7f7a9c;font-size:12px;margin-top:10px'>©2002 MASASHI KISHIMOTO / 2007 SHIPPUDEN All Rights Reserved.</div></div></div></div></div></div></div>
 </div>
-<div class='info appr' data-k='m5'>
+<div class='info appr' id='appr-m5' data-k='m5'>
 <div class='apprhead'><h3>Freigabe Konzept 5</h3><span class='astate' id='as-m5'></span></div>
 <div class='agrid'><label>Name<input id='an-m5' maxlength='80' placeholder='Dein Name' autocomplete='name'></label>
 <label class='awide'>Bemerkung<textarea id='ab-m5' maxlength='2000' placeholder='Was passt, was soll anders werden?'></textarea></label></div>
